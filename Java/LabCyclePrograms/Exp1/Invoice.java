@@ -5,47 +5,45 @@ public class Invoice {
     private String partdescription;
     private int quantity;
     private double price;
-    Invoice(){
+    public Invoice(){
         partnumber = "";
         partdescription = "";
         quantity = 0;
         price = 0.0;
     }
-    void setPartNumber(String pno){
+    public void setPartNumber(String pno){
         partnumber = pno;
-    }
+    } // camel convention
     String getPartNumber(){
         return partnumber;
     }
-    void setPartdescription(String pno) {
-        partdescription = pno;
+    public void setPartdescription(String xyz) {
+        partdescription = xyz;
     }
     String getPartDescription(){
         return partdescription;
     }
 
-    void setQuantity(int pno) {
-        quantity = pno;
+    public void setQuantity(int pno) {
+        if (pno < 0){
+        }
+        else quantity = pno;
     }
     int getQuantity(){
         return quantity;
     }
-    void setPrice(double ps){
-        price = ps;
+    public void setPrice(double ps){
+        if (ps < 0) {
+        }
+        else price = ps;
     }
     double getPrice(){
         return price;
     }
-    double getInvoice(){
-        if (price < 0) {
-            price = 0;
-        }
-        if (quantity < 0){
-            quantity =0;
-        }
+    public double getInvoice(){
         return quantity * price;
     }
-    public static void main(String[] args){
+   public static void main(String[] args){
         Scanner scan = new Scanner(System.in);
         Invoice a = new Invoice();
         System.out.println("Enter PartNumber: ");
@@ -57,6 +55,6 @@ public class Invoice {
         System.out.println("Enter Quantity");
         a.setQuantity(scan.nextInt());
         System.out.println("The Invoice for your purchase is : ");
-        System.out.println(a.getInvoice());
+        System.out.println("Total: " + a.getInvoice());
     }
 }

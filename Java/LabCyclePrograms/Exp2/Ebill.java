@@ -22,7 +22,7 @@ public class Ebill {
         type_of_eb = a.next();
         if(previous_month_reading <0) previous_month_reading = 0;
         if(current_month_reading <0) current_month_reading = 0;
-        if (current_month_reading > previous_month_reading) {
+        if (current_month_reading > previous_month_reading) {//300--> 800 : 800 -300 --> 500
             no_of_units = current_month_reading - previous_month_reading;
         } else no_of_units = current_month_reading;
     }

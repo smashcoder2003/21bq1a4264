@@ -1,4 +1,4 @@
-package Sorting;
+package LabCyclePrograms.Exp6;
 
 import java.util.Scanner;
 
@@ -40,7 +40,7 @@ public class MergeSort {
          int[] a =new int[20];
          Scanner s=new Scanner(System.in);
          int n;
-         System.out.println("enter n value");
+         System.out.println("enter size of the array value: ");
          n=s.nextInt();
          System.out.println("enter the array elements");
          for(int i=0;i<n;i++)
@@ -50,4 +50,4 @@ public class MergeSort {
          for(int i=0;i<n;i++)
              System.out.println(a[i]);
      }
- }
+}

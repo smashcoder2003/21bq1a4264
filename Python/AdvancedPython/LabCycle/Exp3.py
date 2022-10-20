@@ -1,6 +1,7 @@
-names = {1: "Rama",
-         2: "Ravi",
-         3: "Raju"}
-position = 2
-result = {element[0]: element[1] for element in sorted(names.items(), key=lambda x: x[1][position])}
-print(result)
+n = int(input("Enter the no of rocks: "))
+rocks = []
+for i in range(n):
+    rocks.append(int(input()))
+while rocks:
+    print(rocks.index(min(rocks)))
+

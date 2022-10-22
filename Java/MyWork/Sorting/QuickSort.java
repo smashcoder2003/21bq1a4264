@@ -1,4 +1,4 @@
-package TextbookCodeSnippets.Arrays.Sorting;
+package MyWork.Sorting;
 import java.util.Arrays;
 
 public class QuickSort {
@@ -34,7 +34,7 @@ public class QuickSort {
     public static void main(String[] args) {
         int[] arr = {11, 2, 3, 5, 23, 64, 9};
         int start = 0, end = arr.length;
-        quickSort(arr, start, end - 1);
+        quickSort(arr, start, end -1);
         System.out.println("The array after sorting is : ");
         System.out.println(Arrays.toString(arr));
     }

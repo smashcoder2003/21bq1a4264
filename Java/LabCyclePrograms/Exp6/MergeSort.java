@@ -3,6 +3,7 @@ package LabCyclePrograms.Exp6;
 import java.util.Scanner;
 
 public class MergeSort {
+    public static int swapcount;
         static void mergeSort(int a[], int first, int last){
             int mid;
             if(first < last){
@@ -32,8 +33,10 @@ public class MergeSort {
                 temp_array[k++] = a[i++];
             while(j<=last)
                 temp_array[k++] = a[j++];
-            for(i=first;i<=last;i++)
+            for(i=first;i<=last;i++){
+                if (a[i] != temp_array[i]) swapcount++;
                 a[i] = temp_array[i];
+            }
         }
 
      public static void main(String[] args) {
@@ -47,7 +50,9 @@ public class MergeSort {
              a[i]=s.nextInt();
          mergeSort(a,0,n-1);
          System.out.println("elements after sorting are");
-         for(int i=0;i<n;i++)
+         for(int i=0;i<n;i++){
              System.out.println(a[i]);
+         }
+         System.out.println("The no of swaps that occurred in the sorting process are: " + swapcount);
      }
 }

@@ -19,7 +19,7 @@ class VarArgs4 {
     }
     public static void main(String args[])
     {
-        vaTest(1, 2, 3); // OK
+        vaTest(1, 2, 3,4,5,6,9); // OK
         vaTest(true, false, false); // OK
         // vaTest(); // Error: Ambiguous! The compiler can't decide which method to call!
     }

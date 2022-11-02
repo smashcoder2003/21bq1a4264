@@ -18,13 +18,13 @@ def binarysearch(arr, key):
     low = 0
     high = len(arr)-1
     while low <= high:
-        mid = low + high//2
+        mid = (low + high)//2
         if arr[mid] < key:
             low = mid + 1
         elif arr[mid] > key:
             high = mid - 1
         else:
-            return f"The element found at index: {mid}"
+            return f"The element: {key} \nfound at index: {mid}"
     return "Element not found."
 
 

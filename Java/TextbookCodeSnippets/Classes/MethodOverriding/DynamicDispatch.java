@@ -25,7 +25,7 @@ class main {
         r.callMe();// inside I's callMe method
         r = obj2;// r refers to the class J
         r.callMe();// inside J's callMe method
-        r = obj1;// r refers to the calss K
+        r = obj1;// r refers to the class K
         r.callMe();// inside K's callMe method
     }
 }

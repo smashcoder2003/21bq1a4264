@@ -11,6 +11,7 @@ class Employee:
         self.gross_salary = self.computegrosssalary
         self.net_salary = self.computenetsalary
 
+
     @property
     def computegrosssalary(self):
         hra = 0.2 * self.basic
@@ -43,6 +44,7 @@ if __name__ == "__main__":
         employees.append(Employee(id=id, name=name, basic=basic, years_of_experience=years_of_experience))
 
     average_salary = 0
+    employee_with_highest_salary = employees[0]
     print("The net salaries of all the employees and their names are: ")
     for i in employees:
         if i.net_salary > employee_with_highest_salary.net_salary:

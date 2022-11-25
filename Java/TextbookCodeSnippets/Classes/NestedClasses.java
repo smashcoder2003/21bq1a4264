@@ -8,6 +8,7 @@ class Outer {
         inner.display();
     }
     class Inner{
+        int y;
         void display() {
             System.out.println("display: outer_x = " + outer_x);
         }

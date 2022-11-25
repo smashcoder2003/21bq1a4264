@@ -1,7 +1,7 @@
 package com.Bhargav.Interfaces.DependencyInjection;
 
 public class TaxReport {
-    private TaxCalculator calculator;
+    TaxCalculator calculator;
     TaxReport(TaxCalculator calculator) {
         this.calculator = calculator;
     }
@@ -14,3 +14,6 @@ public class TaxReport {
     }
 
 }
+// Constructor injection
+// Method injection
+// Setter injection

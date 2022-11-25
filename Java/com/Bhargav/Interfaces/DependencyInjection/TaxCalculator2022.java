@@ -1,7 +1,7 @@
 package com.Bhargav.Interfaces.DependencyInjection;
 
 public class TaxCalculator2022 implements TaxCalculator {
-    private double taxableIncome;
+     double taxableIncome;
     TaxCalculator2022(double taxableIncome) {
         this.taxableIncome = taxableIncome;
     }

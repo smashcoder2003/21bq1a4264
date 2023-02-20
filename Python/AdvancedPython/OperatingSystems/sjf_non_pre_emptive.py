@@ -12,7 +12,7 @@ def CreateTable():
 
 # Function to calculate the table for FCFS
 def CalculateTable(hashmap):
-    hashmap = {item: val for item, val in sorted(hashmap.items(), key=lambda item: item[1][0])}
+    hashmap = {item: val for item, val in sorted(hashmap.items(), key=lambda item: item[1][:2])}
     list = [x for x in hashmap]
 
     for i in range(len(list)):

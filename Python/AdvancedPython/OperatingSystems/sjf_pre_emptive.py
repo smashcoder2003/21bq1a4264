@@ -1,9 +1,4 @@
-# Python3 program to implement Shortest Remaining Time First
-# Shortest Remaining Time First (SRTF)
-
-# Function to find the waiting time
-# for all processes
-def fwt(processes, n, wt):
+def find_waiting_time(processes, n, wt):
     btcopy = [0] * n
     # Copy the burst time into rt[]
     for i in range(n):
@@ -38,8 +33,8 @@ def fwt(processes, n, wt):
 
             fint = t + 1
 
-            [short] = (fint - proc[short][1] -
-                       proc[short][2])
+            [short] = (fint - processes[short][1] -
+                       processes[short][2])
 
             if wt[short] < 0:
                 wt[short] = 0
@@ -62,7 +57,7 @@ def avgtimetaken(processes, n):
 
     # Function to find waiting time
     # of all processes
-    fwt(processes, n, wt)
+    find_waiting_time(processes, n, wt)
 
     # Function to find turn around time
     # for all processes
@@ -86,8 +81,8 @@ def avgtimetaken(processes, n):
 
 # Driver code
 if __name__ == "__main__":
-    # Process id's
-    proc = [[1, 6, 1], [2, 8, 1],
-            [3, 7, 2], [4, 3, 3]]
+    # Process details
+    processes = [[1, 6, 1], [2, 8, 1],
+                 [3, 7, 2], [4, 3, 3]]
     n = 4
-    avgtimetaken(proc, n)
+    avgtimetaken(processes, n)

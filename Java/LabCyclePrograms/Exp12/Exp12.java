@@ -23,8 +23,8 @@ class Prime implements Runnable
             }
         }
     }
-}
 
+}
 class Fib implements Runnable
 {
     long a,b,c,n;

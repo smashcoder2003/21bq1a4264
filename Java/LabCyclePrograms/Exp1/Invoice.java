@@ -1,5 +1,6 @@
 package LabCyclePrograms.Exp1;
 import java.util.Scanner;
+import java.util.*;
 public class Invoice {
     private String partnumber;
     private String partdescription;
@@ -25,6 +26,7 @@ public class Invoice {
     }
 
     public void setQuantity(int pno) {
+
         if (pno < 0){
         }
         else quantity = pno;

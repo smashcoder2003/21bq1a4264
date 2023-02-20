@@ -12,6 +12,6 @@ public class LightDistance {
         distance = lightspeed * seconds;
         System.out.print("In " + days);
         System.out.print(" days light will travel " + distance);
-        System.out.print(" miles");
+        System.out.print(" miles.");
     }
 }

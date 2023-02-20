@@ -1,47 +1,44 @@
 package LabCyclePrograms.Exp6;
-
 import java.util.Scanner;
 
 public class MergeSort {
     public static int swapcount;
-        static void mergeSort(int a[], int first, int last){
+        static void mergeSort(int[] a, int low, int high){
             int mid;
-            if(first < last){
-                mid = (first + last)/2;
-                mergeSort(a,first,mid);
-                mergeSort(a,mid+1,last);
-                merge(a,first,mid,last);
+            if(low < high){
+                mid = (low + high)/2;
+                mergeSort(a,low,mid);
+                mergeSort(a,mid+1,high);
+                merge(a,low,mid,high);
             }
         }
-        static void merge(int a[],int first, int mid,int last){
-            int[] temp_array = new int[20];
-            int i = first;
+        static void merge(int a[],int low, int mid,int high){
+            int[] temp_array = new int[a.length];
+            int i = low;
             int j = mid+1;
-            int k = first;
-            while(i <= mid && j <= last){
+            int k = low;
+            while(i <= mid && j <= high){
                 if(a[i] <= a[j]){
-                    temp_array[k] = a[i];
-                    i++;
+                    temp_array[k++] = a[i++];
+
                 }
                 else{
-                    temp_array[k] = a[j];
-                    j++;
+                    temp_array[k++] = a[j++];
                 }
-                k++;
             }
             while(i<=mid)
                 temp_array[k++] = a[i++];
-            while(j<=last)
+            while(j<=high)
                 temp_array[k++] = a[j++];
-            for(i=first;i<=last;i++){
+            for(i=low;i<=high;i++){
                 if (a[i] != temp_array[i]) swapcount++;
                 a[i] = temp_array[i];
             }
         }
 
      public static void main(String[] args) {
-         int[] a =new int[20];
-         Scanner s=new Scanner(System.in);
+         int[] a = new int[20];
+         Scanner s = new Scanner(System.in);
          int n;
          System.out.println("enter size of the array value: ");
          n=s.nextInt();
@@ -53,6 +50,6 @@ public class MergeSort {
          for(int i=0;i<n;i++){
              System.out.println(a[i]);
          }
-         System.out.println("The no of swaps that occurred in the sorting process are: " + swapcount);
+         //System.out.println("The no of swaps that occurred in the sorting process are: " + swapcount);
      }
 }

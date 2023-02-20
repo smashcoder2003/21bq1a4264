@@ -1,0 +1,2 @@
+from AdvancedPython.OperatingSystems.MyFcfs import fcfs_non_pre_emptive
+fcfs_non_pre_emptive()

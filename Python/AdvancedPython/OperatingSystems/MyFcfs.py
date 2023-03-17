@@ -56,3 +56,6 @@ def fcfs_non_pre_emptive():
     Mytable1 = CreateTable()
     Mytable1 = CalculateTable(Mytable1)
     PrintTable(Mytable1)
+
+
+fcfs_non_pre_emptive()

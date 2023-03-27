@@ -5,7 +5,7 @@ graph = [[] for i in range(v)]
 
 
 # Function For Implementing Best First Search
-# Gives output path having lowest cost
+# Gives output path having the lowest cost
 
 
 def best_first_search(actual_Src, target, n):
@@ -16,12 +16,13 @@ def best_first_search(actual_Src, target, n):
 
     while pq.empty() == False:
         u = pq.get()[1]
-        # Displaying the path having lowest cost
+        # Displaying the path having the lowest cost
         print(u, end=" ")
         if u == target:
             break
 
         for v, c in graph[u]:
+
             if visited[v] == False:
                 visited[v] = True
                 pq.put((c, v))

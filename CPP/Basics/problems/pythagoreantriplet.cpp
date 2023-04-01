@@ -6,7 +6,8 @@ using namespace std;
 bool pythagoreanTriplets(int a, int b, int c) {
     if (pow(a,2) + pow(b,2) == pow(c,2))
             return true;  
-        else return false;
+    else 
+        return false;
 }
 
 int main(){

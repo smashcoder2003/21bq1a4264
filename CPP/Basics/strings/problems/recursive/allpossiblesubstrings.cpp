@@ -1,23 +1,21 @@
 #include<iostream>
 
 using namespace std;
-
-void allPossibleSubStr(string str, string ans)
-{
-    if(str.length() == 0)
-    {
+ 
+ void allpossiblesubStr(string str, string ans)
+ {
+    if(str.length() == 0){
         cout << ans << endl;
-        return;    
+        return;
     }
-        
-    char ch = str[0];
-    allPossibleSubStr(str.substr(1), ans);
-    allPossibleSubStr(str.substr(1), ans + ch);
-}
 
-int main()
-{
+    char ch = str[0];
+    allpossiblesubStr(str.substr(1),ans);
+    allpossiblesubStr(str.substr(1), ans + ch);
+ }
+ int main()
+ {
     string str;
     cin >> str;
-    allPossibleSubStr(str, "");
-}
+    allpossiblesubStr(str, "");
+ }

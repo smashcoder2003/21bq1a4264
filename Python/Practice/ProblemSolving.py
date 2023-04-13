@@ -1,5 +1,7 @@
 import sys
-
+import threading
+from .testing import  DiningPhilosophers
+global dp
 def maxSubArraySum(a):
     max_so_far = -sys.maxsize - 1
     max_ending_here = 0
@@ -22,3 +24,7 @@ a = [-2, -3, 17]
 print("Maximum contiguous sum is", maxSubArraySum(a))
 
 # This code is contributed by _Devesh Agrawal_
+
+if __name__ == '__main__':
+    t = threading.Thread(target=dp.wantsToEat,
+                         args=(6, pickLeftFork, pickRightFork, eat, putLeftFork, putRightFork))

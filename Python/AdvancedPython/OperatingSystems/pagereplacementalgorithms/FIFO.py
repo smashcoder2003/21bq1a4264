@@ -3,34 +3,25 @@ from queue import Queue
 # FIFO
 
 
-def pageReplacement(io_stream, n, no_of_frames, pagefaults=0, hits=0, misses=0):
+def pageReplacement(io_stream, n, no_of_frames, page_faults=0, hits=0, misses=0):
     queue = Queue()
     s = set()
 
-    for i in range(n):
+    for page in io_stream:
 
-        if len(s) < no_of_frames:
-            if io_stream[i] not in s:
-                queue.put(io_stream[i])
-                s.add(io_stream[i])
-                pagefaults += 1
-                misses += 1
+        if page not in s:
+            page_faults += 1
+            if len(s) < no_of_frames:
+                s.add(page)
+                queue.put(page)
             else:
-                hits += 1
-        else:
-            if io_stream[i] not in s:
                 s.remove(queue.get())
-                queue.put(io_stream[i])
-                s.add(io_stream[i])
-                pagefaults += 1
-                misses += 1
-            else:
-                hits += 1
+                s.add(page)
 
         for x in s:
             print(x, end='\t')
         print()
-    print("pagefaults: ", pagefaults)
+    print("pagefaults: ", page_faults)
     print("hits: ", hits)
     print("misses: ", misses)
 

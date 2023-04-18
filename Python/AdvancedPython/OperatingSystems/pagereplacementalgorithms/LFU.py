@@ -1,38 +1,39 @@
-def lfuPageReplacement(io_stream, n, no_of_frames,
-                       page_faults=0, page_hits=0, page_misses=0):
+def lfuPageReplacement(io_stream, no_of_frames,
+                       page_faults=0, page_hits=0):
+
     frequencies = dict()
     pages = []
 
-    for i in range(n):
-        if len(pages) < no_of_frames:
-            if io_stream[i] not in pages:
-                frequencies[io_stream[i]] = frequencies.get(io_stream[i], 0) + 1
-                pages.append(io_stream[i])
-                page_misses += 1
-                page_faults += 1
+    for page in io_stream:
+
+        if page not in pages:
+            page_faults += 1
+
+            if len(pages) < no_of_frames:
+                pages.append(page)
+                frequencies[page] = frequencies.get(page, 0) + 1
+
             else:
-                page_hits += 1
-                frequencies[io_stream[i]] = frequencies.get(io_stream[i], 0) + 1
-        else:
-            if io_stream[i] not in pages:
+                # Replacing the Least Frequent Page with new Page
+                pages.append(page)
+                frequencies[page] = frequencies.get(page, 0) + 1
                 pages.pop(0)
-                frequencies[io_stream[i]] = frequencies.get(io_stream[i], 0) + 1
-                page_faults += 1
-                page_misses += 1
-                pages.append(io_stream[i])
-            else:
-                frequencies[io_stream[i]] = frequencies.get(io_stream[i], 0) + 1
-                page_hits += 1
+
+        else:
+            page_hits += 1
+            frequencies[page] += 1
+
+        # Sorting the pages according to their frequencies
         pages = sorted(pages, key=lambda x: frequencies[x])
 
-        for x in pages:
-            print(x, end='\t')
+        for item in pages:
+            print(item, end='\t')
         print()
+
     print("page_faults: ", page_faults)
-    print("hits: ", page_hits)
-    print("misses: ", page_misses)
+    print("page_hits: ", page_hits)
 
 
 if __name__ == '__main__':
-    incoming_stream = [1, 2, 3, 4, 2, 1, 5]
-    lfuPageReplacement(incoming_stream, len(incoming_stream), 3)
+    incoming_stream = [7, 0, 1, 2, 0, 3, 0, 4, 2, 3, 0, 3, 2, 1, 2]
+    lfuPageReplacement(incoming_stream, 3)

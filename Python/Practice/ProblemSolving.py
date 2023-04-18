@@ -1,6 +1,6 @@
 import sys
 import threading
-from .testing import  DiningPhilosophers
+from .testing import DiningPhilosophers
 global dp
 def maxSubArraySum(a):
     max_so_far = -sys.maxsize - 1

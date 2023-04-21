@@ -11,9 +11,11 @@ def pageReplacement(io_stream, n, no_of_frames, page_faults=0, hits=0, misses=0)
 
         if page not in s:
             page_faults += 1
+            
             if len(s) < no_of_frames:
                 s.add(page)
                 queue.put(page)
+                
             else:
                 s.remove(queue.get())
                 s.add(page)
@@ -21,6 +23,7 @@ def pageReplacement(io_stream, n, no_of_frames, page_faults=0, hits=0, misses=0)
         for x in s:
             print(x, end='\t')
         print()
+        
     print("pagefaults: ", page_faults)
     print("hits: ", hits)
     print("misses: ", misses)

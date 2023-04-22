@@ -11,7 +11,7 @@ bool isSafe(int** arr, int x, int y, int n)
 
 bool ratInMaze(int** arr, int x, int y,int n, int** solution)
 {
-    if(x==n-1 && y== n-1){
+    if(x==n-1 && y==n-1){
         solution[x][y] = 1;
         return true;
     }

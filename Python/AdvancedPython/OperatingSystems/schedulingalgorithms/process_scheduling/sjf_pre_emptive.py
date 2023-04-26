@@ -80,11 +80,8 @@ def findavgTime(processes, n):
     # of all processes
     findWaitingTime(processes, n, wt)
 
-    # Function to find turn around time
-    # for all processes
     findTurnAroundTime(processes, n, wt, tat)
 
-    # Display processes along with all details
     print("Processes Burst Time	 Waiting",
           "Time	 Turn-Around Time")
     total_wt = 0
@@ -102,11 +99,7 @@ def findavgTime(processes, n):
 
 # Driver code
 if __name__ == "__main__":
-    # Process id's
     proc = [[1, 6, 1], [2, 8, 1],
             [3, 7, 2], [4, 3, 3]]
     n = 4
     findavgTime(proc, n)
-
-# This code is contributed
-# Shubham Singh(SHUBHAMSINGH10)

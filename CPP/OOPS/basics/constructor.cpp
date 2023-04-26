@@ -37,7 +37,7 @@ int main()
     student1 a("bhargav", 18, 0);
     a.printInfo();
     student1 b = a;
-    b.name = "bhavana";
+    b.name = "ChandraSena";
     b.gender = 1;
     b.printInfo();
     a.printInfo();

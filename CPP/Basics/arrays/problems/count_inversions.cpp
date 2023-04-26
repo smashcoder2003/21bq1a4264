@@ -67,7 +67,5 @@ int main()
     for (int i = 0; i < n; i++)
         cin >> arr[i];
 
-    int* inversions = new int(0);
-    cout << countInversions(arr, n) << endl;
     cout << mergeSort(arr, 0, n-1, n) << endl;
 }

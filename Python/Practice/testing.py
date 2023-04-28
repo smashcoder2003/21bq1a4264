@@ -4,7 +4,7 @@ from matplotlib import pyplot as pp
 def fcfs(sequence, start):
     temp = sequence.copy()
     temp.insert(0, start)
-    pp.rcParams['xtick.bottum'] = pp.rcParams['xtick.labelbuttom']
+    pp.rcParams['xtick.bottom'] = pp.rcParams['xtick.labelbuttom'] = True
     pp.rcParams['xtick.top'] = pp.rcParams['xtick.labeltop'] = True
     size = len(temp)
     x = temp

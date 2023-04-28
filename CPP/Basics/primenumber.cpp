@@ -6,7 +6,7 @@ int main(){
     int number;
     cin>>number;
     int flag=0;
-    for(int i=2;i<sqrt(number);i++){
+    for(int i=2;i<=sqrt(number);i++){
         if (number%i==0){
             flag =1;
             break;

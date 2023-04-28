@@ -28,9 +28,7 @@ bool ratInMaze(int** arr, int x, int y,int n, int** solution)
         solution[x][y] = 0;
         return false;
     }
-
-    return false;
-    
+    return false; 
 }
 
 
@@ -77,7 +75,4 @@ int main()
 
     delete[] solution;
     delete[] arr;
-
-    
-
 }

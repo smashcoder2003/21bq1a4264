@@ -5,12 +5,7 @@ using namespace std;
 // pasing head as the a reference.
 // Understand pass by reference concept 
 // before you see the code.
-void insert_at_beginning(Node* &head, int val) {
-    Node* obj = new Node(val);
-    obj -> next = head;
-    head = obj;
-    return;
-}
+// For implementation see linked_list.h
 
 int main() {
     Node *temp = new Node(20);

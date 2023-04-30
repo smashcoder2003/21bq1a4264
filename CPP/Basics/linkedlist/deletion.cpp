@@ -1,12 +1,14 @@
 #include<iostream>
 #include "linked_list.h"
-
 using namespace std;
 
 void deleteNode(Node* &head, int val) {
     Node* temp = head;
+    if(head == NULL) {
+        return;
+    }
     
-    if(temp -> val == val) {
+    else if(temp -> val == val) {
         head = head -> next;
     }
 
@@ -17,7 +19,9 @@ void deleteNode(Node* &head, int val) {
         }
 
         if(temp -> next -> val == val) {
+            Node* todelete = temp -> next;
             temp -> next = temp -> next -> next;
+            delete todelete;
         }
     }    
 }
@@ -27,6 +31,6 @@ int main() {
     insert_at_beginning(temp, 5);
     insert_at_beginning(temp, 2);
     insert_at_beginning(temp, 1);
-    deleteNode(temp, 10);
+    deleteNode(temp, 1);
     display(temp);
 }

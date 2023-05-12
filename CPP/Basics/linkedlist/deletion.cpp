@@ -18,7 +18,11 @@ void deleteNode(Node* &head, int val) {
             temp = temp -> next;
         }
 
-        if(temp -> next -> val == val) {
+        if (!(temp -> next)) {
+            return;
+        }
+
+        else if(temp -> next -> val == val) {
             Node* todelete = temp -> next;
             temp -> next = temp -> next -> next;
             delete todelete;
@@ -31,6 +35,6 @@ int main() {
     insert_at_beginning(temp, 5);
     insert_at_beginning(temp, 2);
     insert_at_beginning(temp, 1);
-    deleteNode(temp, 1);
+    deleteNode(temp, 15);
     display(temp);
 }

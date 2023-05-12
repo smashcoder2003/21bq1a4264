@@ -1,23 +1,12 @@
-from matplotlib import pyplot as pp
+def decorator(func):
+    def new_function():
+        print("I am the new function")
+    return new_function
 
 
-def fcfs(sequence, start):
-    temp = sequence.copy()
-    temp.insert(0, start)
-    pp.rcParams['xtick.bottom'] = pp.rcParams['xtick.labelbuttom'] = True
-    pp.rcParams['xtick.top'] = pp.rcParams['xtick.labeltop'] = True
-    size = len(temp)
-    x = temp
-    y = []
-    headmovement += abs(temp[i] - temp[i - 1])
-    string = "headmovement=", str(headmovement)
-    string2 = str(temp)
-    pp.plot(x, y, colour='green', makefacecolor='blue', marker='o',
-            makersize=5, linewidth=2, label='FCFS')
-    pp.ylim = (0, size)
-    pp.yticks([])
-    pp.title('FCFS')
-    pp.show()
 
+@decorator
+def foo():
+    print("I am foo")
 
-sequence = list(map(int, input().strip().split()))
+foo()

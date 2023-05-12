@@ -32,3 +32,29 @@ void insert_at_beginning(Node* &head, int val) {
     head = obj;
     return;
 }
+
+void insertatend(Node* &head, int val) {
+    if(head == NULL) {
+        head = new Node(val);
+        return;
+    }
+        
+    Node *obj = new Node(val);
+    Node* temp = head;
+    
+    while(temp -> next != NULL) {
+        temp = temp -> next;
+    }
+    temp -> next = obj;
+}
+
+int length(Node* head) {
+    int count = 0;
+
+    while(head != NULL) {
+        ++count;
+        head = head -> next;
+    }
+    
+    return count;
+}

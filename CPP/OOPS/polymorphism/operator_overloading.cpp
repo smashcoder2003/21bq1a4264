@@ -10,7 +10,7 @@ class Friends {
         this -> name = name;
     }
 
-        void operator +(Friends obj1) {
+    void operator +(Friends obj1) {
             cout << name << " and " << obj1.name << " are friends.";
     }
 };

@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 
-using namespace std;
 /* Brute Force Approach O(N^2) */
 int countInversions(int arr[], int n)
 {
@@ -62,10 +61,10 @@ int mergeSort(int arr[], int low, int high, int n)
 int main()
 {
     int n;
-    cin >> n;
+    std::cin >> n;
     int arr[n];
     for (int i = 0; i < n; i++)
-        cin >> arr[i];
+        std::cin >> arr[i];
 
-    cout << mergeSort(arr, 0, n-1, n) << endl;
+    std::cout << mergeSort(arr, 0, n-1, n) << endl;
 }

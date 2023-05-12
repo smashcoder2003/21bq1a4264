@@ -12,6 +12,7 @@ void evenAfterOdd(Node* head) {
         even -> next = odd -> next;
         even = even -> next;
     }
+    
     odd -> next = evenStart;
     if(odd -> next == NULL) {
         even -> next = NULL;

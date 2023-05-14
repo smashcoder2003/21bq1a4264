@@ -13,12 +13,15 @@ void makeCycle(Node* head, int position) {
         }
 
         temp = temp -> next;
+        
         if(idx != position)
             ++idx;
     }
+
     if(idx == position) {
         loopNode = temp;
     }
+
     if(loopNode != NULL && idx == position) {
         temp -> next = loopNode;
     }

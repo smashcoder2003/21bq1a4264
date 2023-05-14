@@ -7,6 +7,7 @@ bool balancedParenthesis(std::string s) {
     std::stack<char> st;
 
     for(int i = 0; i < s.length(); i++) {
+        
         if(s[i] == '(' || s[i] == '{' || s[i] == '[') {
             st.push(s[i]);
             continue;
@@ -29,6 +30,7 @@ bool balancedParenthesis(std::string s) {
 
         return 0;
     }
+
     if(!st.empty())
         return 0;
     return 1;

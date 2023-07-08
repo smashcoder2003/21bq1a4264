@@ -6,6 +6,7 @@
             "command": "/usr/bin/clang++",
             "args": [
                 "-std=c++20",
+                "-I/Users/bunty/Documents/GitHub/21bq1a4264/CPP/my_name_spaces/",
                 "-fcolor-diagnostics",
                 "-fansi-escape-codes",
                 "${file}",

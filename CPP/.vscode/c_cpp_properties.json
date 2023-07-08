@@ -5,7 +5,8 @@
             "includePath": [
                 "${workspaceFolder}/**",
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX13.1.sdk/usr/include/c++/v1/experimental",
-                "/usr/local/include"
+                "/usr/local/include",
+                "/Users/bunty/Documents/GitHub/21bq1a4264/CPP/my_name_spaces"
             ],
             "defines": [],
             "macFrameworkPath": [

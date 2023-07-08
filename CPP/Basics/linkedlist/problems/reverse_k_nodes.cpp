@@ -22,6 +22,8 @@ Node* reverse_k_nodes(Node* head, int k) {
 
     return prev; 
 }
+
+
 int main() {
     Node* temp = new Node(5);
     insert_at_beginning(temp,4);
@@ -29,6 +31,6 @@ int main() {
     insert_at_beginning(temp,2);
     insert_at_beginning(temp,1);
     display(temp);
-    temp = reverse_k_nodes(temp, 2);
+    temp = reverse_k_nodes(temp, 3);
     display(temp);
 }

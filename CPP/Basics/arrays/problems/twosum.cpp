@@ -43,7 +43,7 @@ int main()
     cin >> k;
 
     int arr[n];
-    for(int i=0; i<n; i++)
+    for(int i = 0; i < n; i++)
         cin >> arr[i];
 
     cout << to_string(twosum(arr, n, k));

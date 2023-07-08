@@ -1,17 +1,15 @@
 #include <iostream>
 #include <stack>
-
-using namespace std;
-
+#include <vector>
 
 std::vector<int> stockSpan(std:: vector<int> stocks) {
-   std:: stack<std:: pair<int,int>> st;
-   std:: vector<int> ans;
+   std::stack<std:: pair<int,int>> st;
+   std::vector<int> ans;
 
-   for(auto stock: stocks) {
+   for (auto stock: stocks) {
       int spawn = 1;
 
-      while(!st.empty() && st.top().first <= stock) {
+      while (!st.empty() && st.top().first <= stock) {
          spawn += st.top().second;
          st.pop();
       }  

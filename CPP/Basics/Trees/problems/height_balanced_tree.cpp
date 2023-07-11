@@ -32,9 +32,11 @@ int main()
    TreeNode* root = new TreeNode(1);
    root->left = new TreeNode(2);
    root->right = new TreeNode(3);
-   
-   if (balanced_tree(root) != -1)
-      std::cout << "balanced";
-   else
-      std::cout << "not balanced";
+
+   bool is_balanced = (balanced_tree(root) != -1);
+   std::cout << (is_balanced?"yes":"no");   
+
+   delete root->left;
+   delete root->right;
+   delete root;
 }

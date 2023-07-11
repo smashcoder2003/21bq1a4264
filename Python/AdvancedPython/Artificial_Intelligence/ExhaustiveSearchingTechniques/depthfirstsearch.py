@@ -1,19 +1,11 @@
 from breadthfirstsearch import Node
-from queue import Queue
+from queue import LifoQueue
 
 
-"""
-1. Optimal BFS uses and open and closed list to maintain
-the list of nodes which are visited and unvisited.
-2. Nodes if no children and visited -> list[Closed]
-3. Nodes if children and not visited -> list[Open]
-"""
-
-
-def optimalBFS(root: Node, Goal: Node) -> list[Node]:
-    open = Queue(-1)
+def dfs(root: Node, Goal: Node):
+    open = LifoQueue()
     open.put(root)
-    closed = list()
+    closed = []
     found = False
 
     while open and not found:
@@ -28,9 +20,9 @@ def optimalBFS(root: Node, Goal: Node) -> list[Node]:
 
         if popped.left:
             open.put(popped.left)
-
         if popped.right:
             open.put(popped.right)
+
         closed.append(popped)
 
 
@@ -46,4 +38,4 @@ if __name__ == '__main__':
     B.left = D
     C.right = E
     B.right = F
-    optimalBFS(A, E)
+    dfs(A, E)

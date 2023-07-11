@@ -11,8 +11,8 @@ for i in range(n):
 
 d = sorted(d.items(), key=lambda item: item[1][0])
 print(d)
-
 ET = []
+
 for i in range(len(d)):
     # first process
     if i == 0:

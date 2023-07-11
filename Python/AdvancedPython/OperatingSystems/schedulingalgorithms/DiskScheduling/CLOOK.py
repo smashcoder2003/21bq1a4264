@@ -1,4 +1,6 @@
 from matplotlib import pyplot as plt
+
+
 def clookDiskScheduling(tracks: list[int], head: int):
     left = list()
     right = list()
@@ -6,10 +8,10 @@ def clookDiskScheduling(tracks: list[int], head: int):
     x = [head]
 
     for track in tracks:
-       if track <= head:
-           left.append(track)
-       else:
-           right.append(track)
+        if track <= head:
+            left.append(track)
+        else:
+            right.append(track)
 
     left.sort()
     right.sort()

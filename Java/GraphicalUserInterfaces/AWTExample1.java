@@ -7,7 +7,7 @@ import java.awt.event.ActionListener;
 // creating frame container with the use of inheritance
 public class AWTExample1 extends Frame implements ActionListener{
     JButton b = new JButton("Click Me!");
-    AWTExample1(){
+    AWTExample1() {
         // setting button position on screen
         b.setBounds(30,100,100,100);
         b.addActionListener(this);

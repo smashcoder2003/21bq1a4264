@@ -10,13 +10,14 @@ def sstfDiskScheduling(tracks: list[int], head: int):
         for j in range(len(tracks)):
 
             track_seek_time = abs(tracks[j] - head)
-            if min_track - head > track_seek_time:
+            if abs(min_track - head) > track_seek_time:
                 min_track = tracks[j]
-                x.append(tracks[j])
+        x.append(min_track)
 
         seek_time += abs(head - min_track)
         head = min_track
         tracks.remove(min_track)
+
     y = [-i for i in range(len(x))]
     plt.rcParams['xtick.top'] = plt.rcParams['xtick.labeltop'] = True
     plt.plot(x, y, color="green",
@@ -29,6 +30,7 @@ def sstfDiskScheduling(tracks: list[int], head: int):
     plt.yticks([])
     plt.title('SSTF')
     plt.show()
+    print(x)
     return seek_time
 
 

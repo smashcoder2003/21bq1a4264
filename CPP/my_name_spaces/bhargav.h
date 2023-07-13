@@ -17,6 +17,22 @@ namespace bhargav
       }
    };
 
+   TreeNode *lowest_common_ancestor(TreeNode *root, TreeNode *n1, TreeNode *n2)
+   {
+      if (root == NULL || root == n1 || root == n2)
+         return root;
+
+      TreeNode *left = lowest_common_ancestor(root->left, n1, n2);
+      TreeNode *right = lowest_common_ancestor(root->right, n1, n2);
+
+      if (left != NULL && right != NULL)
+         return root;
+
+      if (left != NULL)
+         return left;
+
+      return right;
+   }
    void preorder(TreeNode *root)
    {
       if (root == NULL)

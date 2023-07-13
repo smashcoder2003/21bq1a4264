@@ -1,7 +1,7 @@
-import pandas as pd
 import numpy as np
+import pandas as pd
+from sklearn.impute import KNNImputer
 from sklearn.neighbors import KNeighborsRegressor
-from sklearn.impute import SimpleImputer, KNNImputer
 
 # Load the dataset
 data = pd.read_csv("/Users/bunty/Documents/elephantinindia.csv")

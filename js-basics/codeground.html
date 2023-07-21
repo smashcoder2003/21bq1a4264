@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code JSON Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        textarea {
+            width: 100%;
+            height: 200px;
+            resize: vertical;
+        }
+        button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Write Your Code:</h2>
+    <textarea id="codeInput" placeholder="Write your code here..."></textarea>
+    <label for="language">Select a language:</label>
+    <select id="language">
+        <option value="js">JavaScript</option>
+        <option value="python-3.9.4">Python 3</option>
+        <option value="python-3.10.0">Python-3.10.0</option>
+        <option value="java">Java</option>
+    </select>
+    <button onclick="generateJSON()">Run</button>
+    <h2>JSON Output:</h2>
+    <textarea id="jsonOutput" rows="10" cols="80" readonly></textarea>
+
+    <script src="codeground.js">
+        
+    </script>
+</body>
+</html>

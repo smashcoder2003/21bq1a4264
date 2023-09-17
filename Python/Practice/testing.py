@@ -1,177 +1,91 @@
-import numpy as np
+#%%
+import numpy as np # linear algebra
+import pandas as pd # data processing, CSV file I/O (e.g. pd.read_csv)
+import os
+from subprocess import check_output
+import seaborn as sns
 import matplotlib.pyplot as plt
-
-# Creating data set
-
-# A
-a = [0, 0, 1, 1, 0, 0,
-     0, 1, 0, 0, 1, 0,
-     1, 1, 1, 1, 1, 1,
-     1, 0, 0, 0, 0, 1,
-     1, 0, 0, 0, 0, 1]
-# B
-b = [0, 1, 1, 1, 1, 0,
-     0, 1, 0, 0, 1, 0,
-     0, 1, 1, 1, 1, 0,
-     0, 1, 0, 0, 1, 0,
-     0, 1, 1, 1, 1, 0]
-# C
-c = [0, 1, 1, 1, 1, 0,
-     0, 1, 0, 0, 0, 0,
-     0, 1, 0, 0, 0, 0,
-     0, 1, 0, 0, 0, 0,
-     0, 1, 1, 1, 1, 0]
-
-# Creating labels
-y = [[1, 0, 0],
-     [0, 1, 0],
-     [0, 0, 1]]
-
-# visualizing the data, plotting A.
-plt.imshow(np.array(c).reshape(5, 6))
+import warnings
+from pandas.plotting import lag_plot
+from statsmodels.tsa.arima.model import ARIMA
+from sklearn.metrics import mean_squared_error
+#%%
+warnings.filterwarnings('ignore')
+#%%
+df = pd.read_csv("/Users/bunty/DataspellProjects/pythonProject/data_sets/archive-2/AXISBANK.csv")
+df.head()
+#%%
+df[['Close']].plot()
+plt.title("Axis Bank")
 plt.show()
+#%%
+dr = df.cumsum()
+dr.plot()
+plt.title('AXIS_BANK Cumulative Returns')
+#%%
+plt.figure(figsize=(10,10))
+lag_plot(df['Open'], lag=5)
+plt.title('AXIS_BANK Autocorrelation plot')
 
-# converting data and labels into numpy array
+#%%
+df['Date'][1857]
 
-"""
-Convert the matrix of 0 and 1 into one hot vector
-so that we can directly feed it to the neural network,
-these vectors are then stored in a list x.
-"""
+#%%
+train_data, test_data = df[0:int(len(df)*0.8)], df[int(len(df)*0.8):]
+plt.figure(figsize=(12,7))
+plt.title('AXIS_BANK Prices')
+plt.xlabel('Dates')
+plt.ylabel('Prices')
+plt.plot(df['Open'], 'blue', label='Training Data')
+plt.plot(test_data['Open'], 'green', label='Testing Data')
+plt.savefig('open_data.png')
+plt.xticks(np.arange(0,1857, 300), df['Date'][0:1857:300])
+plt.legend()
+#%%
+def smape_kun(y_true, y_pred):
+    return np.mean((np.abs(y_pred - y_true) * 200/ (np.abs(y_pred) + np.abs(y_true))))
+#%%
 
-x = [np.array(a).reshape(1, 30), np.array(b).reshape(1, 30),
-     np.array(c).reshape(1, 30)]
-
-# Labels are also converted into NumPy array
-y = np.array(y)
-
-
-# activation function
-
-def sigmoid(x):
-    return 1 / (1 + np.exp(-x))
-
-
-# Creating the Feed forward neural network
-# 1 Input layer(1, 30)
-# 1 hidden layer (1, 5)
-# 1 output layer(3, 3)
-
-def f_forward(x, w1, w2):
-    # hidden
-    z1 = x.dot(w1)  # input from layer 1
-    a1 = sigmoid(z1)  # out put of layer 2
-
-    # Output layer
-    z2 = a1.dot(w2)  # input of out layer
-    a2 = sigmoid(z2)  # output of out layer
-    return a2
+train_ar = train_data['Open'].values
+test_ar = test_data['Open'].values
 
 
-# initializing the weights randomly
-def generate_wt(x, y):
-    l = []
-    for i in range(x * y):
-        l.append(np.random.randn())
-    return np.array(l).reshape(x, y)
+history = [x for x in train_ar]
+print(type(history))
+predictions = list()
+for t in range(len(test_ar)):
+    model = ARIMA(history, order=(5,5,0))
+    model_fit = model.fit()
+    output = model_fit.forecast()
+    yhat = output[0]
+    predictions.append(yhat)
+    obs = test_ar[t]
+    history.append(obs)
+    print('predicted=%f, expected=%f' % (yhat, obs))
+error = mean_squared_error(test_ar, predictions)
+print('Testing Mean Squared Error: %.3f' % error)
+error2 = smape_kun(test_ar, predictions)
+print('Symmetric mean absolute percentage error: %.3f' % error2)
 
+plt.figure(figsize=(12,7))
+plt.plot(df['Open'], 'green', color='blue', label='Training Data')
+plt.plot(test_data.index, predictions, color='green', marker='o', linestyle='dashed',
+         label='Predicted Price')
+plt.plot(test_data.index, test_data['Open'], color='red', label='Actual Price')
+plt.savefig('predictions.png')
+plt.title('AXIS_BANK Prices Prediction')
+plt.xlabel('Dates')
+plt.ylabel('Prices')
+plt.xticks(np.arange(0,1857, 300), df['Date'][0:1857:300])
+plt.legend()
 
-# for loss we will be using mean square error(MSE)
-def loss(out, Y):
-    s = (np.square(out - Y))
-    s = np.sum(s) / len(y)
-    return (s)
-
-
-# Back propagation of error
-def back_prop(x, y, w1, w2, alpha):
-    # hidden layer
-    z1 = x.dot(w1)  # input from layer 1
-    a1 = sigmoid(z1)  # output of layer 2
-
-    # Output layer
-    z2 = a1.dot(w2)  # input of out layer
-    a2 = sigmoid(z2)  # output of out layer
-    # error in output layer
-    d2 = (a2 - y)
-    d1 = np.multiply((w2.dot((d2.transpose()))).transpose(),
-                     (np.multiply(a1, 1 - a1)))
-
-    # Gradient for w1 and w2
-    w1_adj = x.transpose().dot(d1)
-    w2_adj = a1.transpose().dot(d2)
-
-    # Updating parameters
-    w1 = w1 - (alpha * w1_adj)
-    w2 = w2 - (alpha * w2_adj)
-
-    return w1, w2
-
-
-def train(x, Y, w1, w2, alpha=0.01, epoch=10):
-    acc = []
-    losss = []
-    for j in range(epoch):
-        l = []
-        for i in range(len(x)):
-            out = f_forward(x[i], w1, w2)
-            l.append((loss(out, Y[i])))
-            w1, w2 = back_prop(x[i], y[i], w1, w2, alpha)
-        print("epochs:", j + 1, "======== acc:", (1 - (sum(l) / len(x))) * 100)
-        acc.append((1 - (sum(l) / len(x))) * 100)
-        losss.append(sum(l) / len(x))
-    return acc, losss, w1, w2
-
-
-def predict(x, w1, w2):
-    Out = f_forward(x, w1, w2)
-    maxm = 0
-    k = 0
-
-    for i in range(len(Out[0])):
-        if maxm < Out[0][i]:
-            maxm = Out[0][i]
-            k = i
-    if k == 0:
-        print("Image is of letter A.")
-    elif k == 1:
-        print("Image is of letter B.")
-    else:
-        print("Image is of letter C.")
-    plt.imshow(x.reshape(5, 6))
-    plt.show()
-
-
-w1 = generate_wt(30, 5)
-w2 = generate_wt(5, 3)
-
-"""The arguments of train function are data set list x,
-correct labels y, weights w1, w2, learning rate = 0.1,
-no of epochs or iteration.The function will return the
-matrix of accuracy and loss and also the matrix of
-trained weights w1, w2"""
-
-acc, losss, w1, w2 = train(x, y, w1, w2, 0.1, 1000000)
-
-import matplotlib.pyplot as plt1
-
-# plotting accuracy
-plt1.plot(acc)
-plt1.ylabel('Accuracy')
-plt1.xlabel("Epochs:")
-plt1.show()
-
-# plotting Loss
-plt1.plot(losss)
-plt1.ylabel('Loss')
-plt1.xlabel("Epochs:")
-plt1.show()
-
-"""
-The predict function will take the following arguments:
-1) image matrix
-2) w1 trained weights
-3) w2 trained weights
-"""
-
-predict(x[1], w1, w2)
+plt.figure(figsize=(12,7))
+plt.plot(test_data.index, predictions, color='green', marker='o', linestyle='dashed',
+         label='Predicted Price')
+plt.plot(test_data.index, test_data['Open'], color='red', label='Actual Price')
+plt.xticks(np.arange(1486,1856, 60), df['Date'][1486:1856:60])
+plt.title('BANK Prices Prediction')
+plt.savefig('bank.png')
+plt.xlabel('Dates')
+plt.ylabel('Prices')
+plt.legend()

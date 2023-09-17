@@ -6,7 +6,7 @@ class Final1 {
     }
 }
 class Final2 extends Final1 {
-    void meth(){ // the method can't be overridden because it was declared as final.
-        System.out.println("This is ILLEGAL!!!");
-    }
+//    void meth(){ // the method can't be overridden because it was declared as final.
+//        System.out.println("This is ILLEGAL!!!");
+//    }
 }

@@ -1,3 +1,5 @@
+#include <iostream>
+
 namespace bhargav
 {
    class TreeNode
@@ -7,7 +9,7 @@ namespace bhargav
       TreeNode *left;
       TreeNode *right;
 
-      TreeNode(int data = NULL,
+      TreeNode(int data = 0,
                TreeNode *left = NULL,
                TreeNode *right = NULL)
       {

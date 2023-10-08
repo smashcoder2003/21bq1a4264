@@ -1,5 +1,5 @@
 Java/.DS_Store
-.DS_Store
+*.DS_Store
 Java/.DS_Store
 *.class
 Python/.DS_Store
@@ -15,3 +15,5 @@ Python/.DS_Store
 Python/AdvancedPython/.DS_Store
 CPP/Basics/executables/
 CPP/executables
+*.xml
+*.iml

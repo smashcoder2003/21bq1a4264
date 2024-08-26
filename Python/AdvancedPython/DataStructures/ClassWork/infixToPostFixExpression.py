@@ -27,5 +27,4 @@ def infix_to_postfix(exp):
 
 if __name__ == "__main__":
     exp = input("Enter an infix expression: ")
-    for x in infix_to_postfix(exp):
-        print(x, end=' ')
+    infix_to_postfix(exp)

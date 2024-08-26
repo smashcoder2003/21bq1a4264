@@ -1,0 +1,104 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family:Arial, Helvetica, sans-serif;
+    box-sizing:border-box;
+}
+.container{
+    width:100%;
+    min-height:100vh;
+    background-color:rgb(191, 125, 131);
+    padding:10px;
+
+
+}
+.round{
+    width:200px;
+    height:200px;
+    border-radius:200px;
+    background-color: rgba(255, 255, 255, 0.863);
+    border:5px solid rgba(255, 192, 203, 0.326);
+    position:absolute;
+    top:15px;
+    left:260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.todolist{
+
+    background-color: rgb(255, 240, 240);
+    margin-left: 390px;
+    margin-top:120px;
+    width:650px;
+    height:400px;
+    display: flex;
+    justify-content: flex-start;
+    align-items:flex-start;
+    padding-top:100px;
+    position:relative;
+    flex-direction: column;
+
+}
+
+.img {
+    position: absolute;
+    top:0px;
+    left:0px;
+    width:65px;
+}
+
+.row {
+    background:rgba(219, 198, 209, 0.53);
+    width:90%;
+    display:flex;
+    justify-content: space-between;
+    border-radius: 20px;
+    padding:12px 0 12px 80px;
+    position: relative;
+    margin-left:30px;
+
+
+}
+
+input {
+    flex:1;
+    background:transparent;
+    border:none;
+    outline: none;
+    font-size: 17px;
+}
+
+.add {
+    position:absolute;
+    right:0px;
+    bottom:0px;
+    width:68px;
+    height:44px;
+    background:pink;
+    border:none;
+    border-radius: 20px;
+    cursor: pointer;
+
+}
+ul {
+    padding-left:124px;
+}
+ul li{
+    padding-top:20px;
+    list-style-type:none;
+    border:solid;
+    padding-left: 30px;
+    position:relative;
+}
+ul li::before{
+    content:'';
+    height:20px;
+    width:20px;
+    position:absolute;
+    top: 4px;
+    right:50px;
+    border-radius: 50% / 100%;
+    background-image:url(images/unchecked.png);
+}

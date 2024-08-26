@@ -11,6 +11,7 @@ class Figure {
         return 0;
     }
 }
+
 class Rectangle extends Figure {
     Rectangle(double a , double b) {
         super(a,b);

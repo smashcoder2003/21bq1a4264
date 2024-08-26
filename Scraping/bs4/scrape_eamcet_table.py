@@ -1,7 +1,7 @@
 import openpyxl
+import time
 
-
-def scrapeEamcetTable(table, collegeName):
+def scrapeEamcetTable(table, collegeName, branchName):
     sheet = openpyxl.Workbook()
     active_sheet = sheet.active
     active_sheet.append(["S.NO", "HALL TICKET NO", "RANK",
@@ -17,4 +17,5 @@ def scrapeEamcetTable(table, collegeName):
         new_data.extend(remaining_details)
         active_sheet.append(new_data)
 
-    sheet.save(f"./2023/MECHANICAL ENGINEERING/{collegeName}.xlsx")
+    sheet.save(f"/Users/bhargavbunty/Documents/21bq1a4264/Scraping/bs4/2024/{branchName}/{collegeName}.xlsx")
+

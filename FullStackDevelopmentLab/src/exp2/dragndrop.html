@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DragNDrop</title>
+    <style>
+        #rectangle {
+            height: 500px;
+            width: 500px;
+            border: solid 1px black;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            row-gap: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<script>
+   function allowDrop(ev) {
+      ev.preventDefault();
+   }
+
+   function drag(ev) {
+      ev.dataTransfer.setData('text', ev.target.id);
+   }
+
+
+   function drop(ev) {
+      ev.preventDefault();
+      let data = ev.dataTransfer.getData('text');
+      let draggedElement = document.getElementById(data);
+      ev.target.appendChild(draggedElement);
+   }
+</script>
+    <div id="rectangle" ondragover="allowDrop(event)" ondrop="drop(event)"></div>
+    <img id="bhargav" src="../32607220.jpg" height="200" width="200" ondragstart="drag(event)" draggable="true"/>
+</body>
+</html>

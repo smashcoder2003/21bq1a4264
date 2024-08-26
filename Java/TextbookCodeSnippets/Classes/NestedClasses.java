@@ -8,9 +8,9 @@ class Outer {
         inner.display();
     }
     class Inner{
-        int y;
+        int y = 10;
         void display() {
-            System.out.println("display: outer_x = " + outer_x);
+            System.out.println("display: outer_x + inner_y = " + outer_x + y);
         }
     }
 }

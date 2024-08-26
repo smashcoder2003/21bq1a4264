@@ -8,7 +8,7 @@ public class Promote {
         long d = 139081;
         float f = 5.67f;
         double g = .12124124;
-        double result = (a *g) + (g-1) + (c/g);
+        double result = (a * g) + (g-1) + (c/g);
         System.out.println(result);
     }
 }

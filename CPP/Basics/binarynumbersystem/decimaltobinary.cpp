@@ -10,7 +10,7 @@ int decimaltobinary(int num){
         pow *= 2;
     }
 
-    pow /= 2;2^2
+    pow /= 2;
 
     while(pow > 0){
         lastdigit = num/pow;

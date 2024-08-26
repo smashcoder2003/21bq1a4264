@@ -1,4 +1,4 @@
-#!/Users/bunty/Documents/GitHub/21bq1a4264/Scraping/venv/bin/python3.9
+#!/Users/bhargavbunty/Documents/21bq1a4264/Scraping/venv/bin/python3.12
 
 import sys
 import json

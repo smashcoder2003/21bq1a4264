@@ -7,8 +7,8 @@ public class IfSample {
         x = x*2;
         if (x==y) System.out.println("X is equal to Y");
         x *=2;
-        if(x>y) System.out.println("X is greater than y");
+        if (x>y) System.out.println("X is greater than y");
         x = x*2;
-        if(x==y) System.out.println("This won't be seen");
+        if (x==y) System.out.println("This won't be seen");
     }
 }

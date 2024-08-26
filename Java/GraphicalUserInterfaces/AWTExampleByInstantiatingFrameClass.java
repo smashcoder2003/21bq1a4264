@@ -23,6 +23,7 @@ public class AWTExampleByInstantiatingFrameClass implements ActionListener {
         f.setLayout(null);
         f.setVisible(true);
      }
+
      public static void main(String[] args) {
         AWTExampleByInstantiatingFrameClass obj1 = new AWTExampleByInstantiatingFrameClass();
      }

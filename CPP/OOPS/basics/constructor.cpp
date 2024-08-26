@@ -10,7 +10,6 @@ class student1 {
 
     // Default Constructor
     student1(){};
-
     
     student1(string name, int age, bool gender) {
         this -> name = name;
